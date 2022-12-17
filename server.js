@@ -17,7 +17,7 @@ const MongoClient = mongodb.MongoClient;
 MongoClient.connect(process.env.DATABASE_URL, {
 	useNewUrlParser: true,
 })
-	.then("open", () => console.log("Connected to MongoDB"))
+	.then(db, () => console.log("Connected to MongoDB"))
 	.catch((err) => {
 		console.log(`Error occured: ${err.stack}`);
 		process.exit(1);
