@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser')
 
 const indexRouter = require("./routes/index");
 const authorRouter = require("./routes/authors");
@@ -13,6 +14,7 @@ app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout.pug");
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', false)

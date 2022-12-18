@@ -1,4 +1,11 @@
 extends ../layouts/layout.pug
 
 block content
-    | All Authors
+    h2 Search Authors
+    form(action='/authors' method='GET')
+        label Name
+        input(type='text' name='name' value=searchOptions.name)
+        button(type='submit') Search
+    br
+    each author in authors
+        div=author.name
