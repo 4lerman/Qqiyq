@@ -4,28 +4,23 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const app = express();
+
 const indexRouter = require("./routes/index");
+const authorRouter = require("./routes/authors");
+
 
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout.pug");
 app.use(express.static("public"));
 
-const mongodb = require("mongodb");
-const MongoClient = mongodb.MongoClient;
-
-MongoClient.connect(process.env.DATABASE_URL, {
-	useNewUrlParser: true,
-	//serverSelectionTimeoutMS: 5000,
-    socketTimeoutMS: 5000
-})
-	.then(db => {
-		console.log("Connected to MongoDB");
-	})
-	.catch((err) => {
-		console.log(`Error occured: ${err.stack}`);
-		process.exit(1);
-	});
+const mongoose = require("mongoose");
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
+const db = mongoose.connection
+db.on("error", err => console.error(err))
+db.once("open", () => console.log('Connected to Mongoose'))
 
 app.use("/", indexRouter);
+app.use('/authors', authorRouter)
+
 app.listen(process.env.PORT || 3000);
