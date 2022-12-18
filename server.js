@@ -15,7 +15,11 @@ app.set("layout", "layouts/layout.pug");
 app.use(express.static("public"));
 
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
+mongoose.set('strictQuery', false)
+mongoose.connect(process.env.DATABASE_URL, {
+	useNewUrlParser: true,
+	serverSelectionTimeoutMS: 5000
+})
 const db = mongoose.connection
 db.on("error", err => console.error(err))
 db.once("open", () => console.log('Connected to Mongoose'))
