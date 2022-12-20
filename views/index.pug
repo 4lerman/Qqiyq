@@ -1,4 +1,7 @@
 extends layouts/layout.pug
 
 block content
-    | Middle
+    h2 Recently Added
+    div
+            each book in books
+                img(height='150' width='100' src=book.coverImagePath)
