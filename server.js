@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 const indexRouter = require("./routes/index");
 const authorRouter = require("./routes/authors");
@@ -14,6 +15,7 @@ const bookRouter = require("./routes/books");
 app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout.pug");
+app.use(methodOverride('_method'))
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 

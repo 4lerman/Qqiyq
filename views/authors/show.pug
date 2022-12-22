@@ -1,0 +1,11 @@
+extends ../layouts/layout.pug
+
+block content
+    h2=author.name
+    a(href=`/authors/${author.id}/edit`) Edit
+    - url = `/authors/${author.id}`
+    include ../partials/deleteForm
+    if(booksByAuthor.length > 0)
+        h2 Books By Author
+        each book in booksByAuthor
+            img(height='150' width='100' src=book.coverImagePath)
