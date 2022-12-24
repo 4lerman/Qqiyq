@@ -1,7 +1,7 @@
 extends ../layouts/layout.pug
 
 block content
-    h2 Edit Book
+    h2(class='page-header') Edit Book
     form(action=`/books/${book.id}?_method=PUT` method='POST')
         include _form_fields
         a(href='/books') Cancel
