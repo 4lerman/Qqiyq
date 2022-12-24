@@ -4,5 +4,6 @@ block content
     h2(class='page-header') New Author
     form(action='/authors' method='POST')
         include _form_fields
-        a(href='/authors') Cancel
-        button(type='submit') Create
+        div(class='form-row form-row-end btn-row')
+            a(class='btn btn-danger' href='/authors') Cancel
+            button(class='btn btn-primary' type='submit') Create

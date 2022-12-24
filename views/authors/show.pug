@@ -2,11 +2,12 @@ extends ../layouts/layout.pug
 
 block content
     h2(class='page-header')=author.name
-    a(href=`/authors/${author.id}/edit`) Edit
-    - url = `/authors/${author.id}`
-    include ../partials/deleteForm
+    div(class='btn-row')
+        a(class='btn btn-primary' href=`/authors/${author.id}/edit`) Edit
+        - url = `/authors/${author.id}`
+        include ../partials/deleteForm
     if(booksByAuthor.length > 0)
-        h2 Books By Author
+        h2(class='page-header') Books By Author
         each book in booksByAuthor
             a(href=`/books/${book.id}`)
                 img(height='150' width='100' src=book.coverImagePath)
