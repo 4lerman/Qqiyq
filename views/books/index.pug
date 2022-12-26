@@ -17,6 +17,6 @@ block content
         div(class='form-row form-row-end')
             button(class='btn btn-primary' type='submit') Search
         div
-            each book in books
-                a(href=`/books/${book.id}`)
-                    img(height='150' width='100' src=book.coverImagePath)
+            - books = books
+            - locals.large = true
+            include ../partials/bookGrid

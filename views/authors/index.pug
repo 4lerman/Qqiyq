@@ -11,9 +11,10 @@ block content
             button(class='btn btn-primary' type='submit') Search
     br
     each author in authors
-        div=author.name
-        div(class='btn-row')
-            a(class='btn btn-primary' href=`/authors/${author.id}`) View
-            a(class='btn btn-primary' href=`/authors/${author.id}/edit`) Edit
-            - url = `/authors/${author.id}`
-            include ../partials/deleteForm 
+        div(class='author-row')
+            div(class='author-name')=author.name
+            div(class='btn-row')
+                a(class='btn btn-primary' href=`/authors/${author.id}`) View
+                a(class='btn btn-primary' href=`/authors/${author.id}/edit`) Edit
+                - url = `/authors/${author.id}`
+                include ../partials/deleteForm 

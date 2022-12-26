@@ -8,6 +8,5 @@ block content
         include ../partials/deleteForm
     if(booksByAuthor.length > 0)
         h2(class='page-header') Books By Author
-        each book in booksByAuthor
-            a(href=`/books/${book.id}`)
-                img(height='150' width='100' src=book.coverImagePath)
+        - books = booksByAuthor
+        include ../partials/bookGrid
